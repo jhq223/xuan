@@ -1,0 +1,21 @@
+[[group]]
+name = "技术大佬"
+desc = "一些值得学习的技术博客" # 可选描述
+
+[[group.links]]
+name = "Zola 文档"
+url = "https://www.getzola.org/"
+bio = "官方文档，Zola 静态网站生成器。"
+
+[[group.links]]
+name = "Rust 官网"
+url = "https://www.rust-lang.org/"
+bio = "高性能、安全、并发。"
+
+[[group]]
+name = "生活朋友"
+
+[[group.links]]
+name = "某某的博客"
+url = "#"
+bio = "这里是生活记录。"

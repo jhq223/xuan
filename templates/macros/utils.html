@@ -1,0 +1,10 @@
+{% macro get_reading_time(page) %}
+{# 判断语言是否以 zh, ja, 或 ko 开头，这样能覆盖 zh-CN, ja-JP 等情况 #}
+{%- if page.lang is starting_with("zh") or page.lang is starting_with("ja") or page.lang is starting_with("ko") -%}
+{# CJK 语言修正：除以 1.88 系数 #}
+{{ (page.reading_time / 1.88) | round | int }}
+{%- else -%}
+{# 欧美语言保持默认 #}
+{{ page.reading_time }}
+{%- endif -%}
+{% endmacro get_reading_time %}

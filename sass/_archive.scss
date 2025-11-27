@@ -1,0 +1,117 @@
+.archive-page {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-bottom: 4rem;
+
+    .page-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+        color: var(--fg-muted-5);
+        margin-bottom: 3rem;
+    }
+}
+
+.timeline {
+    position: relative;
+    padding-left: 0;
+
+    background: linear-gradient(to bottom,
+            var(--fg-muted-2) 0%,
+            var(--fg-muted-2) 100%) no-repeat;
+    background-size: 2px 100%;
+    background-position: 1.5rem 0;
+
+    // 如果希望线在第一个元素上方不显示，或者最后一个元素下方不显示
+    // 可以调整 background-position-y 和 height，或者这里保持贯穿
+}
+
+
+.timeline-marker {
+    position: absolute;
+    left: 1.5rem;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.timeline-year {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0 1.5rem 0;
+
+    .year-marker {
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--bg-color);
+        border: 2px solid var(--accent-color);
+    }
+
+    .year-title {
+        margin: 0;
+        padding-left: 4rem;
+        font-family: var(--font-transitional);
+        font-size: var(--font-size-xx-large);
+        color: var(--fg-color);
+        line-height: 1;
+    }
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+        .post-marker {
+            background-color: var(--accent-color);
+            transform: translateX(-50%) scale(1.4);
+        }
+
+        .timeline-content {
+            color: var(--accent-color);
+
+            .post-date {
+                color: var(--accent-color);
+            }
+        }
+    }
+
+    .post-marker {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: var(--fg-muted-3);
+        border: 2px solid var(--bg-color);
+        box-shadow: 0 0 0 1px var(--fg-muted-3);
+    }
+
+    .timeline-content {
+        display: flex;
+        align-items: baseline;
+        padding-left: 4rem;
+        width: 100%;
+        color: var(--fg-color);
+        transition: var(--transition);
+
+        .post-date {
+            font-family: var(--font-monospace-code);
+            color: var(--fg-muted-4);
+            font-size: var(--font-size-small);
+            margin-right: 1.5rem;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .post-title {
+            font-size: var(--font-size-large);
+            font-weight: bold;
+            line-height: 1.2;
+        }
+    }
+}

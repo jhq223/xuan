@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="links-page">
+    <h1 class="page-title">{{ section.title }}</h1>
+    <div class="page-content">{{ section.content | safe }}</div>
+
+    {# 加载数据 #}
+    {% set data = load_data(path="data/friends.toml") %}
+
+    {# --- 第一层循环：遍历分组 --- #}
+    {% for group in data.group %}
+    <div class="links-group">
+        {# 分组标题 #}
+        <h2 class="group-title">
+            {{ group.name }}
+            {% if group.desc %}
+            <small class="group-desc">{{ group.desc }}</small>
+            {% endif %}
+        </h2>
+
+        {# --- 第二层循环：该分组下的链接网格 --- #}
+        <div class="links-grid">
+            {% for item in group.links %}
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-avatar">
+                    {% if item.avatar %}
+                    <img src="{{ item.avatar }}" alt="{{ item.name }}" loading="lazy">
+                    {% else %}
+                    <div class="avatar-placeholder">{{ item.name | truncate(length=1, end="") }}</div>
+                    {% endif %}
+                </div>
+                <div class="link-info">
+                    <h3 class="link-name">{{ item.name }}</h3>
+                    <p class="link-bio">{{ item.bio | default(value="") }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}

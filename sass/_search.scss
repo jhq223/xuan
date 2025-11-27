@@ -1,0 +1,144 @@
+/* =========================================
+   Pagefind Search - Theme Variables Integrated
+   ========================================= */
+
+/* --- 1. 容器定位 --- */
+#search-container {
+    position: relative;
+}
+
+/* --- 2. 输入框 (Input) --- */
+#pagefind-search .pagefind-ui__search-input {
+    /* 字体与尺寸 */
+    font-size: var(--font-size-medium) !important;
+    height: 2.5rem !important;
+    /* 稍微加高一点，或者用 var(--font-size-xx-large-em) 等比例调整，这里保持 2.5rem 较合适 */
+    width: 100% !important;
+
+    /* 颜色与背景 */
+    background-color: var(--fg-muted-1) !important;
+    color: var(--fg-color) !important;
+
+    /* 边框与圆角 */
+    border: 2px solid transparent !important;
+    border-radius: 999px !important;
+    /* 保持胶囊形 */
+    box-shadow: var(--edge-highlight) !important;
+
+    /* 内边距：右侧留出关闭按钮空间 */
+    padding: 0 2.5rem 0 1rem !important;
+
+    /* 动画使用主题变量 */
+    transition: border-color var(--transition) ease, box-shadow var(--transition) ease !important;
+}
+
+/* 输入框聚焦状态 */
+#pagefind-search .pagefind-ui__search-input:focus {
+    outline: none !important;
+    /* 使用主题强调色 */
+    border-color: var(--accent-color) !important;
+    /* 聚焦时背景变亮/变实 */
+    background-color: var(--bg-color) !important;
+}
+
+/* 隐藏默认放大镜 */
+#pagefind-search .pagefind-ui__form::before {
+    display: none !important;
+}
+
+/* --- 3. 清除按钮 (Clear Button) --- */
+#pagefind-search .pagefind-ui__search-clear {
+    background: transparent !important;
+    width: 2rem !important;
+    padding: 0 !important;
+    margin-right: 0.5rem !important;
+
+    /* 使用次级文字颜色 */
+    color: var(--fg-muted-4) !important;
+    font-size: 0 !important;
+
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0.2rem !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#pagefind-search .pagefind-ui__search-clear::after {
+    content: "×";
+    font-size: var(--font-size-x-large);
+    /* 使用变量 */
+    font-weight: 400;
+    line-height: 1;
+    display: block;
+}
+
+#pagefind-search .pagefind-ui__search-clear:hover {
+    /* 悬停变为主要文字颜色 */
+    color: var(--fg-color) !important;
+}
+
+/* --- 4. 搜索结果下拉框 (Drawer) --- */
+#pagefind-search .pagefind-ui__drawer {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(100% + 1rem) !important;
+
+    /* 玻璃拟态背景 */
+    background-color: var(--glass-bg) !important;
+    -webkit-backdrop-filter: var(--blur) !important;
+    backdrop-filter: var(--blur) !important;
+
+    /* 阴影与边框 */
+    box-shadow: var(--edge-highlight), var(--shadow-glass) !important;
+    border-radius: var(--rounded-corner) !important;
+    border: 1px solid var(--fg-muted-2) !important;
+
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+    padding: 0.75rem !important;
+    z-index: 9999 !important;
+    gap: 0.5rem !important;
+}
+
+/* 结果项 */
+#pagefind-search .pagefind-ui__result {
+    border: none !important;
+    background: transparent !important;
+    padding: 0.5rem !important;
+    transition: background-color var(--transition) !important;
+}
+
+/* 结果项悬停 */
+#pagefind-search .pagefind-ui__result:hover {
+    background-color: var(--fg-muted-1) !important;
+    border-radius: var(--rounded-corner-small) !important;
+}
+
+/* 标题链接 */
+#pagefind-search .pagefind-ui__result-link {
+    color: var(--fg-color) !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* 摘要文字 */
+#pagefind-search .pagefind-ui__result-excerpt {
+    font-size: var(--font-size-small) !important;
+    color: var(--fg-muted-5) !important;
+    margin-top: 0.25rem;
+}
+
+/* 高亮匹配词 */
+#pagefind-search mark {
+    /* 使用主题定义的黄色背景或强调色透明度 */
+    background-color: var(--accent-color) !important;
+    color: inherit !important;
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
