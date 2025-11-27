@@ -3,8 +3,8 @@ description = "Modern, pretty, and clean theme"
 license = "MIT"
 homepage = "https://github.com/jhq223/xuan"
 min_version = "0.21.0"
-demo = ""
+demo = "https://xuan-theme.jhq223.workers.dev"
 
 [author]
 name = "jhq223"
-homepage = ""
+homepage = "https://blog.900803.xyz"

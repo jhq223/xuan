@@ -106,7 +106,7 @@ pre table td:nth-of-type(1) {
 
 ### KaTeX
 
-Duckquill can render LaTeX using the [KaTeX](https://katex.org) library. It can be enabled using the `extra.katex` config variable.
+Xuan can render LaTeX using the [KaTeX](https://katex.org) library. It can be enabled using the `extra.katex` config variable.
 
 ```latex
 $$\relax f(x) = \int_{-\infty}^\infty\hat{f}(\xi)\,e^{2 \pi i \xi x}\,d\xi$$
@@ -582,7 +582,7 @@ Blah blah <q>Inline Quote</q> hmm.
 <span class="spoiler">Some spoiler</span>
 ```
 
-You know, <span class="spoiler">Duckquill is a pretty dumb name.</span> I know, crazy.
+You know, <span class="spoiler">Xuan is a pretty dumb name.</span> I know, crazy.
 
 With `solid` class:
 
@@ -590,7 +590,7 @@ With `solid` class:
 <span class="spoiler solid">Some spoiler</span>
 ```
 
-You know, <span class="spoiler solid">Duckquill is a pretty dumb name.</span> I know, crazy.
+You know, <span class="spoiler solid">Xuan is a pretty dumb name.</span> I know, crazy.
 
 ### Buttons Dialog
 

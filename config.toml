@@ -1,5 +1,5 @@
 title = "Xuan"
-base_url = "/"
+base_url = "https://xuan-theme.jhq223.workers.dev"
 description = "现代、简洁的 Zola 主题。"
 
 compile_sass = true
@@ -13,7 +13,7 @@ build_search_index = false
 author = "jhq223"
 
 # To translate the entire theme, there must be a file with the same ISO 639-1 or BCP 47
-# language code in the `i18n` directory of your site or the Duckquill theme.
+# language code in the `i18n` directory of your site or the Xuan theme.
 # For example, "i18n/fr.toml" for French or "i18n/zh-Hans.toml" for Simplified Chinese.
 # Otherwise the theme will be in English.
 #
@@ -51,7 +51,7 @@ accent_color = "#5383c3ff"
 # Ditto but for the dark theme.
 # If not set regular variant will be used.
 accent_color_dark = "#10486eff"
-# Whether to use fonts bundled with Duckquill instead of system ones.
+# Whether to use fonts bundled with Xuan instead of system ones.
 # Keep in mind that it also changes the style of headings.
 #
 # bundled_fonts = true
@@ -62,9 +62,9 @@ accent_color_dark = "#10486eff"
 # emoji_favicon = "🤐"
 #
 # URL to website's issue tracker
-issues_url = "http://127.0.0.1:1111/blog/demo/"
+issues_url = "https://github.com/jhq223/xuan/issues"
 # URL to website's source code
-source_url = "http://127.0.0.1:1111/blog/demo/"
+source_url = "https://github.com/jhq223/xuan"
 # Additional CSS styles; expects them to be in the "./static/" directory.
 # If you are using Sass it will be generated there automatically.
 #

@@ -24,7 +24,7 @@ git submodule add https://github.com/jhq223/xuan.git themes/xuan
 在`config.toml`中启用
 
 ```toml
-theme = "duckquill"
+theme = "xuan"
 ```
 
 ## 更新
