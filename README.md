@@ -26,7 +26,7 @@
 将此主题克隆到你的 Zola 站点的 `themes` 目录下：
 
 ```bash
-git clone https://github.com/你的用户名/xuan.git themes/xuan
+git clone https://github.com/jhq223/xuan.git themes/xuan
 ```
 
 然后在你的 `config.toml` 中启用它：
