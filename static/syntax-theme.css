@@ -8,12 +8,6 @@
   background-color: #282c34;
 }
 
-pre mark, 
-.z-code mark {
-    background-color: #33373e !important;
-    color: inherit !important;
-} 
-
 /* Comments */
 .z-comment, .z-meta.z-documentation {
   color: #7f848e;

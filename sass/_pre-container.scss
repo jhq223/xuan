@@ -4,19 +4,15 @@
 	border-radius: var(--rounded-corner);
 
 	.header {
-		--shimmer: rgb(
-			from var(--accent-color) r g b / calc(var(--color-opacity) * 2)
-		);
+		--shimmer: rgb(from var(--accent-color) r g b / calc(var(--color-opacity) * 2));
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		border-radius: var(--rounded-corner) var(--rounded-corner) 0 0;
-		background-image: linear-gradient(
-			to right,
-			var(--fg-muted-1) 50%,
-			var(--shimmer) 75%,
-			var(--fg-muted-1) 100%
-		);
+		background-image: linear-gradient(to right,
+				var(--fg-muted-1) 50%,
+				var(--shimmer) 75%,
+				var(--fg-muted-1) 100%);
 		background-size: 200%;
 		padding: 0.25rem;
 		height: 2.5rem;
@@ -94,5 +90,9 @@
 		margin: 0;
 		box-shadow: none;
 		border-radius: 0 0 var(--rounded-corner) var(--rounded-corner);
+
+		mark {
+			color: inherit;
+		}
 	}
 }
