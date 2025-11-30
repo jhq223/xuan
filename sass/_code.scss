@@ -62,9 +62,7 @@ pre {
 		border-radius: 0; // Unset code block border radius
 		background-color: var(--fg-muted-1);
 		padding: 0; // Unset mark padding
-		color: var(
-			--fg-color
-		); // Unset mark color from accent color to text color
+		color: inherit;
 	}
 
 	// The line numbers already provide some kind of left/right padding
