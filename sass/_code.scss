@@ -54,6 +54,10 @@ pre {
 		-webkit-user-select: none;
 		user-select: none;
 		text-align: center;
+
+		@media (max-width: 576px) {
+			min-width: 2rem;
+		}
 	}
 
 	mark {
