@@ -217,10 +217,6 @@
 	}
 
 	#go-to-top {
-		@media only screen and (max-width: 720px) {
-			display: none;
-		}
-
 		.icon {
 			-webkit-mask-image: var(--icon-top);
 			mask-image: var(--icon-top);
