@@ -24,7 +24,7 @@
    Timeline Core
 =========================== */
 
-$axis-width: 3rem;  // 第一列宽度
+$axis-width: 3rem; // 第一列宽度
 $line-width: 2px;
 
 .timeline {
@@ -64,7 +64,7 @@ $line-width: 2px;
 
 /* 年份特殊样式 */
 .timeline-row--year {
-    margin: 2rem 0 1rem 0;
+    align-items: baseline;
 }
 
 .timeline-year {
@@ -73,7 +73,7 @@ $line-width: 2px;
 }
 
 /* ===========================
-   Dot
+    Dot
 =========================== */
 
 .timeline-axis {
