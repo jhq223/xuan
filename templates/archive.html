@@ -1,39 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="archive-page">
+<div class="archive">
 
-    <h1 class="page-title">{{- macros_translate::translate(key="archive_title", default="Archive" | capitalize,
-        language_strings=language_strings) -}}</h1>
+    <header class="archive-header">
+        <h1 class="archive-title">
+            {{ macros_translate::translate(
+                key="archive_title",
+                default="Archive" | capitalize,
+                language_strings=language_strings
+            ) }}
+        </h1>
 
-    {% set section = get_section(path="blog/_index.md") %}
-    <p class="page-subtitle">
-        <small>
-            {{ macros_translate::translate(key='posts', number=section.pages | length, default='$NUMBER posts in total',
-            language_strings=language_strings) }}
-        </small>
-    </p>
+        {% set section = get_section(path="blog/_index.md") %}
+        <p class="archive-subtitle">
+            {{ macros_translate::translate(
+                key='posts',
+                number=section.pages | length,
+                default='$NUMBER posts in total',
+                language_strings=language_strings
+            ) }}
+        </p>
+    </header>
 
     <div class="timeline">
-        {% set all_posts = section.pages | sort(attribute="date") | reverse %}
+        {% set posts = section.pages | sort(attribute="date") | reverse %}
 
-        {% for year, posts in all_posts | group_by(attribute="year") %}
-        {# 年份节点 #}
-        <div class="timeline-year">
-            <div class="timeline-marker year-marker"></div>
-            <h2 class="year-title">{{ year }}</h2>
-        </div>
+        {% for year, items in posts | group_by(attribute="year") %}
+        <section class="timeline-group">
 
-        {# 文章节点 #}
-        {% for post in posts %}
-        <a href="{{ post.permalink }}" class="timeline-item">
-            <div class="timeline-marker post-marker"></div>
-            <div class="timeline-content">
-                <span class="post-date">{{ post.date | date(format="%m-%d") }}</span>
-                <span class="post-title">{{ post.title }}</span>
+            <!-- 年份 -->
+            <div class="timeline-row timeline-row--year">
+                <div class="timeline-axis">
+                    <span class="timeline-dot timeline-dot--year"></span>
+                </div>
+                <h2 class="timeline-year">{{ year }}</h2>
             </div>
-        </a>
-        {% endfor %}
+
+            <!-- 文章 -->
+            {% for post in items %}
+            <a href="{{ post.permalink }}" class="timeline-row timeline-row--post">
+                <div class="timeline-axis">
+                    <span class="timeline-dot timeline-dot--post"></span>
+                </div>
+
+                <time class="timeline-date">
+                    {{ post.date | date(format="%m-%d") }}
+                </time>
+
+                <span class="timeline-title">
+                    {{ post.title }}
+                </span>
+            </a>
+            {% endfor %}
+
+        </section>
         {% endfor %}
     </div>
 
