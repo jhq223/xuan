@@ -4,13 +4,9 @@ table {
 	border-collapse: collapse;
 	background-color: var(--fg-muted-1);
 	width: 100%;
-	display: block;
-	max-width: 100%;
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
+	overflow: hidden;
 
 	tr {
-		display: table-row; 
 		&:nth-child(even) {
 			background-color: var(--fg-muted-1);
 		}
