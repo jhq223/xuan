@@ -2,21 +2,21 @@
    Archive Layout
 =========================== */
 
-.archive {
+.archive-page {
     max-width: var(--container-width);
     margin: 0 auto;
     padding-bottom: 4rem;
 }
 
-.archive-header {
+.archive-page-header {
     margin-bottom: 3rem;
 }
 
-.archive-title {
+.archive-page-title {
     margin-bottom: 0.5rem;
 }
 
-.archive-subtitle {
+.archive-page-subtitle {
     color: var(--fg-muted-5);
 }
 

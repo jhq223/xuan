@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="archive">
+<div class="archive-page">
 
-    <header class="archive-header">
-        <h1 class="archive-title">
+    <header class="archive-page-header">
+        <h1 class="archive-page-title">
             {{ macros_translate::translate(
                 key="archive_title",
                 default="Archive" | capitalize,
@@ -13,7 +13,7 @@
         </h1>
 
         {% set section = get_section(path="blog/_index.md") %}
-        <p class="archive-subtitle">
+        <p class="archive-page-subtitle">
             {{ macros_translate::translate(
                 key='posts',
                 number=section.pages | length,

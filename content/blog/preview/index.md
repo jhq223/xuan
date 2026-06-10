@@ -4,7 +4,7 @@ description = "预览主题渲染"
 date = 2025-11-27
 
 [taxonomies]
-tags = ["theme"]
+tags = ["theme","test"]
 
 [extra]
 go_to_top = true
@@ -13,6 +13,9 @@ archive = "归档说明"
 trigger = "预警说明"
 disclaimer = "免责声明"
 
+# hot = true
+# featured = true
+# poor=true
 toc = true
 toc_inline = true
 +++
@@ -56,7 +59,6 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 - [ ] Coffee
 - [x] Combustible lemons
 
-[![Male mallard duck](https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Male_mallard_duck_2.jpg/800px-Male_mallard_duck_2.jpg)](https://upload.wikimedia.org/wikipedia/commons/2/24/Male_mallard_duck_2.jpg)
 
 | Mare         | Rating          | Additional info  |
 | :----------- | :-------------- | :--------------- |
@@ -181,7 +183,7 @@ Alternatively, you can append the following URL anchors. It can be more handy in
 
 <br />
 
-![1966 Ford Mustang coupe white](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/1966_Ford_Mustang_coupe_white_003.jpg/320px-1966_Ford_Mustang_coupe_white_003.jpg#start)
+![b34c1b915bc6.jpg](https://cdn.imgchest.com/files/b34c1b915bc6.jpg)
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur.
 
 \
@@ -281,7 +283,7 @@ Available variables are:
 
 {{ mastodon(host="toot.community", user="sungsphinx", id="111789185826519979") }}
 
-## Html块
+## Html 块
 
 ### Description List (`<dl>`)
 
@@ -503,7 +505,7 @@ The <abbr title="American Standard Code for Information Interchange">ASCII</abbr
 
 Quill and a parchment
 
-<img class="transparent no-hover" style="margin-block-end: 0; border-radius: 0;" alt="Quill and a parchment" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/%D7%A7%D7%9C%D7%A3%2C_%D7%A0%D7%95%D7%A6%D7%94_%D7%95%D7%93%D7%99%D7%95.jpg/326px-%D7%A7%D7%9C%D7%A3%2C_%D7%A0%D7%95%D7%A6%D7%94_%D7%95%D7%93%D7%99%D7%95.jpg" />
+<img class="transparent no-hover" style="margin-block-end: 0; border-radius: 0;" alt="Quill and a parchment" src="https://cdn.imgchest.com/files/b34c1b915bc6.jpg" />
 </aside>
 
 A quill is a writing tool made from a moulted flight feather (preferably a primary wing-feather) of a large bird. Quills were used for writing with ink before the invention of the dip pen, the metal-nibbed pen, the fountain pen, and, eventually, the ballpoint pen.

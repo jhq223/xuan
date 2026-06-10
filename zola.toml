@@ -20,18 +20,15 @@ author = "jhq223"
 # ISO 639-1: https://localizely.com/iso-639-1-list/
 # BCP 47: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 default_language = "zh-Hans"
-
 taxonomies = [{ name = "tags", feed = true }]
+generate_robots_txt = true
 
 [markdown]
-highlight_code = true
-highlight_theme = "css"
-highlight_themes_css = [
-    { theme = "one-dark-pro", filename = "syntax-theme.css" },
-]
+lazy_async_image = true
 smart_punctuation = true
 bottom_footnotes = true
 github_alerts = true
+
 
 # [languages.en]
 # title = "xuan"
