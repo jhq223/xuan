@@ -20,9 +20,33 @@
 		document.documentElement.removeAttribute("data-theme");
 	}
 
+	// Apply stored theme to Giallo stylesheets as well.
+	setGialloTheme(storedTheme || defaultTheme || "system");
+
 	// Expose defaultTheme to the outer scope.
 	window.defaultTheme = defaultTheme;
 })();
+
+// Giallo (syntax highlighting) theme switching
+function setGialloTheme(theme) {
+	const lightSheet = document.getElementById("giallo-light");
+	const darkSheet = document.getElementById("giallo-dark");
+
+	// Only switch if both dual-theme stylesheets exist
+	if (!lightSheet || !darkSheet) return;
+
+	if (theme === "dark") {
+		darkSheet.media = "all";
+		lightSheet.media = "not all";
+	} else if (theme === "light") {
+		lightSheet.media = "all";
+		darkSheet.media = "not all";
+	} else {
+		// System preference: restore media queries
+		lightSheet.media = "(prefers-color-scheme: light)";
+		darkSheet.media = "(prefers-color-scheme: dark)";
+	}
+}
 
 // Icon Update and Theme Switching
 function setTheme(theme, saveToLocalStorage = false) {
@@ -43,6 +67,9 @@ function setTheme(theme, saveToLocalStorage = false) {
 
 	// Update the active button based on the selected theme.
 	updateActiveButton(theme);
+
+	// Update Giallo syntax highlighting theme if dual themes are configured.
+	setGialloTheme(theme);
 }
 
 function resetTheme() {

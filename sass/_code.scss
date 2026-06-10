@@ -15,15 +15,77 @@ code:not(pre code) {
 	font-size: var(--font-size-small-em);
 }
 
-pre {
+// Zola 0.22+ (Giallo) code block
+pre.giallo {
 	margin: 1rem 0 1rem;
 	box-shadow: var(--edge-highlight), var(--shadow);
 	border-radius: var(--rounded-corner);
-	background-color: var(--fg-muted-1);
 	padding: 1rem;
 	max-width: 100vw;
 	overflow: auto;
 	line-height: normal;
+
+	code {
+		// .z-code sets background-color and color on the <pre>; <code> is transparent.
+		background: none;
+	}
+
+	// Grid layout: gutter (line numbers) + code side-by-side.
+	// Applied by giallo.js to ALL code blocks, with or without line numbers.
+	// When no line numbers, .giallo-grid--no-gutter hides the empty gutter.
+	.giallo-grid {
+		display: flex;
+	}
+
+	.giallo-gutter {
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		user-select: none;
+		padding-right: 0.4em;
+		text-align: right;
+		opacity: 0.8;
+
+		.giallo-gutter-ln {
+			padding: 0 0.4em;
+			min-width: 3ch;
+			min-height: 1lh;
+		}
+	}
+
+	.giallo-grid--no-gutter .giallo-gutter {
+		// No line numbers: hide the gutter column entirely
+		display: none;
+	}
+
+	.giallo-code {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		flex: 1 0 auto;
+
+		.giallo-code-l {
+			display: block;
+			min-height: 1lh;
+			min-width: 100%;
+			padding: 0 0.4em;
+		}
+	}
+
+	// Highlighted lines marker
+	pre mark {
+		display: block;
+		color: currentcolor;
+	}
+
+	mark {
+		display: block;
+		box-shadow: none;
+		border-radius: 0;
+		background-color: var(--fg-muted-1);
+		padding: 0;
+		color: inherit;
+	}
 
 	table {
 		box-shadow: none;
@@ -49,7 +111,6 @@ pre {
 		}
 	}
 
-	// The line number cells
 	table td:nth-of-type(1) {
 		-webkit-user-select: none;
 		user-select: none;
@@ -60,16 +121,6 @@ pre {
 		}
 	}
 
-	mark {
-		display: block;
-		box-shadow: none;
-		border-radius: 0; // Unset code block border radius
-		background-color: var(--fg-muted-1);
-		padding: 0; // Unset mark padding
-		color: inherit;
-	}
-
-	// The line numbers already provide some kind of left/right padding
 	&[data-linenos] {
 		padding: 1rem 0;
 	}

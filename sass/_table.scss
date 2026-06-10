@@ -1,10 +1,15 @@
-table {
+.table-container {
+	margin: 1rem 0;
 	box-shadow: var(--edge-highlight);
 	border-radius: var(--rounded-corner);
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+table {
 	border-collapse: collapse;
 	background-color: var(--fg-muted-1);
 	width: 100%;
-	overflow: hidden;
 
 	tr {
 		&:nth-child(even) {

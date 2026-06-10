@@ -62,16 +62,21 @@
 	<link type="text/css" rel="stylesheet" href="{{ get_url(path=style) | safe }}" />
 	{%- endfor %}
 
-	{%- if config.markdown.highlight_code and config.markdown.highlight_theme == "css" %}
-	<link type="text/css" rel="stylesheet" href="{{ get_url(path='syntax-theme.css') }}" />
+	{%- if config.markdown.highlighting %}
+	{%- if config.markdown.highlighting.style == "class" %}
+	{%- if config.markdown.highlighting.light_theme and config.markdown.highlighting.dark_theme %}
+	{#- Dual themes: load both with media queries; JS switches them via theme-switcher.js -#}
+	<link id="giallo-light" rel="stylesheet" type="text/css" href="{{ get_url(path='giallo-light.css') }}" media="(prefers-color-scheme: light)" />
+	<link id="giallo-dark" rel="stylesheet" type="text/css" href="{{ get_url(path='giallo-dark.css') }}" media="(prefers-color-scheme: dark)" />
+	{%- else %}
+	{#- Single theme: load one CSS file -#}
+	<link rel="stylesheet" type="text/css" href="{{ get_url(path='giallo.css') }}" />
+	{%- endif %}
+	{%- endif %}
 	{%- endif %}
 	{%- endif %}
 
-	{%- set scripts = ["closable.js"] %}
-
-	{%- if config.extra.show_copy_button %}
-	{%- set scripts = scripts | concat(with=["copy-button.js"]) %}
-	{%- endif %}
+	{%- set scripts = ["closable.js", "giallo.js"] %}
 
 	{%- if config.extra.goatcounter %}
 	{%- set scripts = scripts | concat(with=["count.js"]) %}
