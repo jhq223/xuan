@@ -73,12 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (!copyLabel) return;
 
 		const title = document.createElement("span");
-		const lang =
+		const codeEl = block.querySelector("code");
+		const name =
+			codeEl?.getAttribute("data-name") ||
 			block.getAttribute("data-name") ||
-			block.getAttribute("data-language") ||
-			block.querySelector("code")?.getAttribute("data-lang") ||
-			block.querySelector("code")?.getAttribute("data-language");
-		title.innerHTML = lang || "";
+			codeEl?.getAttribute("data-lang") ||
+			block.getAttribute("data-language");
+		title.innerHTML = name || "";
 
 		const icon = document.createElement("i");
 		icon.classList.add("icon");
