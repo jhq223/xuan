@@ -22,17 +22,44 @@
 
 ## 🛠️ 安装
 
+需要 **Zola 0.23.6 或更新版本**。从旧版升级时，同步更新文章中的组件语法和站点自己的 `i18n/`：中文日期格式改为 `y 年 MM 月 dd 日`，英文改为 `MMMM dd, y`。
+
 将此主题克隆到你的 Zola 站点的 `themes` 目录下：
 
 ```bash
 git clone https://github.com/jhq223/xuan.git themes/xuan
 ```
 
-然后在你的 `config.toml` 中启用它：
+然后在你的 `zola.toml`（旧项目也可以是 `config.toml`）中启用它：
 
 ```toml
 theme = "xuan"
 ```
+
+构建和检查：
+
+```bash
+zola build
+zola check --skip-external-links
+```
+
+使用 Pagefind 搜索时，仍需在 Zola 构建后生成索引：
+
+```bash
+npx pagefind --site public
+```
+
+主题维护者可运行 `python tests/smoke.py --zola /path/to/zola`，检查多语言、组件、日期、分页、订阅、高亮和可选配置。
+
+文章中的旧短代码改用组件，例如：
+
+```jinja
+{{ <image url="image.png" alt="图片" config={config} /> }}
+{{ <video url="video.webm" controls={true} /> }}
+{{ <youtube id="0Da8ZhKcNKQ" /> }}
+```
+
+展示模板代码时，用 `{% raw %}` / `{% endraw %}` 包住示例。更多组件用法见主题的预览文章。
 
 ## 📄 许可证
 

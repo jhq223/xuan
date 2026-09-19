@@ -1,9 +1,9 @@
 <style type="text/css">
 	:root {
-		--alert-note-text: "{{ macros_translate::translate(key='alert_note', default='Note', language_strings=language_strings) }}";
-		--alert-tip-text: "{{ macros_translate::translate(key='alert_tip', default='Tip', language_strings=language_strings) }}";
-		--alert-important-text: "{{ macros_translate::translate(key='alert_important', default='Important', language_strings=language_strings) }}";
-		--alert-warning-text: "{{ macros_translate::translate(key='alert_warning', default='Warning', language_strings=language_strings) }}";
-		--alert-caution-text: "{{ macros_translate::translate(key='alert_caution', default='Caution', language_strings=language_strings) }}";
+		--alert-note-text: "{{ <xuan.translate key={'alert_note'} default={'Note'} language_strings={language_strings} lang={lang} /> }}";
+		--alert-tip-text: "{{ <xuan.translate key={'alert_tip'} default={'Tip'} language_strings={language_strings} lang={lang} /> }}";
+		--alert-important-text: "{{ <xuan.translate key={'alert_important'} default={'Important'} language_strings={language_strings} lang={lang} /> }}";
+		--alert-warning-text: "{{ <xuan.translate key={'alert_warning'} default={'Warning'} language_strings={language_strings} lang={lang} /> }}";
+		--alert-caution-text: "{{ <xuan.translate key={'alert_caution'} default={'Caution'} language_strings={language_strings} lang={lang} /> }}";
 	}
 </style>

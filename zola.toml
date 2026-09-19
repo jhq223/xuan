@@ -47,7 +47,7 @@ github_alerts = true
 accent_color = "#5383c3ff"
 # Ditto but for the dark theme.
 # If not set regular variant will be used.
-accent_color_dark = "#10486eff"
+accent_color_dark = "#8ab9e8"
 # Whether to use fonts bundled with Xuan instead of system ones.
 # Keep in mind that it also changes the style of headings.
 #

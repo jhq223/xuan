@@ -29,7 +29,7 @@
     padding: 0 2.5rem 0 1rem !important;
 
     /* 动画使用主题变量 */
-    transition: border-color var(--transition) ease, box-shadow var(--transition) ease !important;
+    transition: var(--transition) !important;
 }
 
 /* 输入框聚焦状态 */
@@ -110,7 +110,7 @@
     border: none !important;
     background: transparent !important;
     padding: 0.5rem !important;
-    transition: background-color var(--transition) !important;
+    transition: var(--transition) !important;
 }
 
 /* 结果项悬停 */
@@ -137,8 +137,20 @@
 #pagefind-search mark {
     /* 使用主题定义的黄色背景或强调色透明度 */
     background-color: var(--accent-color) !important;
-    color: inherit !important;
+    color: var(--contrast-color) !important;
     padding: 0 2px;
     border-radius: 2px;
     font-weight: bold;
 }
+#pagefind-search {
+    --pagefind-ui-text: var(--fg-color);
+    --pagefind-ui-background: var(--bg-color);
+    --pagefind-ui-border: var(--fg-muted-2);
+    --pagefind-ui-primary: var(--accent-color);
+}
+#pagefind-search .pagefind-ui__drawer:empty { display: none; }
+#pagefind-search .pagefind-ui__search-clear[hidden] { display: none !important; }
+
+#pagefind-search .pagefind-ui__drawer { overflow-x: hidden !important; }
+#pagefind-search .pagefind-ui__result-inner { min-width: 0; }
+#pagefind-search .pagefind-ui__result-excerpt { overflow-wrap: anywhere; }

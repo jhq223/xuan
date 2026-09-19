@@ -143,22 +143,22 @@ Available variables are:
 - `spoiler`: Blurs image until hovered over/pressed on, useful for plot rich game screenshots.
 - `spoiler` with `solid`: Ditto, but makes the image completely hidden.
 
-```jinja2
-{{/* image(url="image.png", alt="This is an image", no_hover=true) */}}
+```jinja
+{% raw %}{{ <image url={"image.png"} alt={"This is an image"} no_hover={true} config={config} /> }}{% endraw %}
 ```
 
 <figure>
-{{ image(url="https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg", alt="Portal Gun blueprint", no_hover=true) }}
+{{ <image url={"https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg"} alt={"Portal Gun blueprint"} no_hover={true} config={config} /> }}
 <figcaption>Image with an alt text and without zoom on hover</figcaption>
 </figure>
 
 <figure>
-{{ image(url="https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg", url_min="https://upload.wikimedia.org/wikipedia/commons/3/38/JPEG_example_JPG_RIP_010.jpg", alt="The gravestone of J.P.G.", no_hover=true) }}
+{{ <image url={"https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg"} url_min={"https://upload.wikimedia.org/wikipedia/commons/3/38/JPEG_example_JPG_RIP_010.jpg"} alt={"The gravestone of J.P.G."} no_hover={true} config={config} /> }}
 <figcaption>Image with compressed version, an alt text, and without zoom on hover</figcaption>
 </figure>
 
 <figure>
-{{ image(url="https://files.catbox.moe/lk7nee.jpg", alt="Portal Gun blueprint", spoiler=true) }}
+{{ <image url={"https://files.catbox.moe/lk7nee.jpg"} alt={"Portal Gun blueprint"} spoiler={true} config={config} /> }}
 <figcaption>Image with an alt text, hidden behind a spoiler</figcaption>
 </figure>
 
@@ -199,17 +199,17 @@ Additionally, the following [attributes](https://developer.mozilla.org/en-US/doc
 - `muted`: Turn off the audio by default.
 - `playsinline`: Prevent the video from playing in fullscreen by default (depends on the browser).
 
-```jinja2
-{{/* video(url="video.webm", alt="This is a video", controls=true) */}}
+```jinja
+{% raw %}{{ <video url={"video.webm"} alt={"This is a video"} controls={true} /> }}{% endraw %}
 ```
 
 <figure>
-{{ video(url="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm", alt="Red flower wakes up", controls=true) }}
+{{ <video url={"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"} alt={"Red flower wakes up"} controls={true} /> }}
 <figcaption>WebM video example from MDN</figcaption>
 </figure>
 
 <figure>
-{{ video(url="https://upload.wikimedia.org/wikipedia/commons/transcoded/0/0e/Duckling_preening_%2881313%29.webm/Duckling_preening_%2881313%29.webm.720p.vp9.webm", alt="Duckling preening", full_bleed=true, controls=true) }}
+{{ <video url={"https://upload.wikimedia.org/wikipedia/commons/transcoded/0/0e/Duckling_preening_%2881313%29.webm/Duckling_preening_%2881313%29.webm.720p.vp9.webm"} alt={"Duckling preening"} full_bleed={true} controls={true} /> }}
 <figcaption>Duckling preening</figcaption>
 </figure>
 
@@ -217,13 +217,13 @@ Additionally, the following [attributes](https://developer.mozilla.org/en-US/doc
 
 Alright, this one doesn't simplify anything, it just adds a CRT-like effect around Markdown code blocks.
 
-```jinja2
-{%/* crt() */%}
+```jinja
+{% raw %}{% <crt> %}{% endraw %}
 -> Markdown code block <-
-{%/* end */%}
+{% raw %}{% </crt> %}{% endraw %}
 ```
 
-{% crt() %}
+{% <crt> %}
 
 ```
  _____________________________________________
@@ -248,7 +248,7 @@ Alright, this one doesn't simplify anything, it just adds a CRT-like effect arou
 |;____________/%%%%%Spicer%%%%%%\____________;|
 ```
 
-{% end %}
+{% </crt> %}
 
 There's also a `cursor` class that you can add to a span with e.g. `█` character to simulate the terminal cursor. It doesn't work from inside Markdown code blocks though.
 
@@ -261,11 +261,11 @@ Available variables are:
 - `autoplay`: Whether the video should autoplay.
 - `start`: On which second video should start.
 
-```jinja2
-{{/* youtube(id="0Da8ZhKcNKQ") */}}
+```jinja
+{% raw %}{{ <youtube id={"0Da8ZhKcNKQ"} /> }}{% endraw %}
 ```
 
-{{ youtube(id="0Da8ZhKcNKQ") }}
+{{ <youtube id={"0Da8ZhKcNKQ"} /> }}
 
 #### Mastodon
 
@@ -277,11 +277,11 @@ Available variables are:
 - `user`: The poster. If not set, it will fallback to the one set in the `[extra.comments]` section of `config.toml`.
 - `id`: The ID of the post, usually at the end of the URL.
 
-```jinja2
-{{/* mastodon(host="toot.community", user="sungsphinx", id="111789185826519979") */}}
+```jinja
+{% raw %}{{ <mastodon host={"toot.community"} user={"sungsphinx"} id={"111789185826519979"} config={config} /> }}{% endraw %}
 ```
 
-{{ mastodon(host="toot.community", user="sungsphinx", id="111789185826519979") }}
+{{ <mastodon host={"toot.community"} user={"sungsphinx"} id={"111789185826519979"} config={config} /> }}
 
 ## Html 块
 
@@ -596,7 +596,7 @@ You know, <span class="spoiler solid">Xuan is a pretty dumb name.</span> I know,
 
 ### Buttons Dialog
 
-```html.j2
+```jinja
 <div class="buttons">
   <a href="#top">Go to Top</a>
   <a class="colored external" href="https://example.org">Example</a>

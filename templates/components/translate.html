@@ -1,0 +1,42 @@
+{#- Adapted from https://github.com/welpo/tabi/blob/7b00ed1d9dca5c529d2816c5b6679bfe600d63fc/templates/macros/translate.html
+Pass the language and dictionary explicitly: Tera components have isolated scope.
+`number` selects a plural form and replaces the $NUMBER placeholder. -#}
+{% component xuan.translate(key, lang, language_strings, number=-1, default="", replace=true) %}
+{%- set key_prefix = "" -%}
+{%- if number == 0 -%}
+    {%- set key_prefix = "zero_" -%}
+{%- elif number == 1 -%}
+    {%- set key_prefix = "one_" -%}
+{%- elif number != -1 -%}
+    {%- if lang == "ar" -%}
+        {%- set modulo = number % 100 -%}
+        {%- if number == 2 -%}
+            {%- set key_prefix = "two_" -%}
+        {%- elif modulo >= 3 and modulo <= 10 -%}
+            {%- set key_prefix = "few_" -%}
+        {%- else -%}
+            {%- set key_prefix = "many_" -%}
+        {%- endif -%}
+    {%- elif lang in ["uk", "be", "bs", "hr", "ru", "sr"] -%}
+        {%- set modulo10 = number % 10 -%}
+        {%- set modulo100 = number % 100 -%}
+        {%- if modulo10 == 1 and modulo100 != 11 -%}
+            {%- set key_prefix = "one_" -%}
+        {%- elif modulo10 >= 2 and modulo10 <= 4 and (modulo100 < 12 or modulo100 > 14) -%}
+            {%- set key_prefix = "few_" -%}
+        {%- else -%}
+            {%- set key_prefix = "many_" -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- set key_prefix = "many_" -%}
+    {%- endif -%}
+{%- endif -%}
+{%- set final_key = key_prefix ~ key -%}
+{#- Languages without separate plural keys can use the unprefixed translation. -#}
+{%- set fallback = language_strings[key] | default(value=default) -%}
+{%- set translated_text = language_strings[final_key] | default(value=fallback) -%}
+{%- if replace -%}
+    {%- set translated_text = translated_text | replace(from="$NUMBER", to=number | str) -%}
+{%- endif -%}
+{{- translated_text | safe -}}
+{% endcomponent xuan.translate %}

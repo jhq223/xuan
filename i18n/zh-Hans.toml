@@ -1,10 +1,10 @@
 # Shown in language picker for multi-language sites
 language_name = "简体中文"
-# Tera date format used for listing posts
+# UTS-35 date pattern used with locale for listing posts
 # (post publication date, tag posts list...).
 # Not used in comments, "date_locale" is used instead.
-# See https://docs.rs/chrono/0.4.31/chrono/format/strftime/index.html
-date_format = "%Y 年 %m 月 %d 日"
+# See https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+date_format = "y 年 MM 月 dd 日"
 date_locale = "zh_CN"
 
 # Menu items.
@@ -81,3 +81,6 @@ updated = "修改于"
 view_comment = "在此处查看评论："
 view_profile = "在此处查看个人资料："
 archive_title = "归档"
+
+archive_years = "按年份浏览"
+archive_count = "$NUMBER 篇"

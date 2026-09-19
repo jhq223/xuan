@@ -2,7 +2,7 @@
 
 <meta http-equiv="content-security-policy"
 content="default-src 'none';
-{%- if config.extra.csp -%}
+{%- if config.extra?.csp -%}
 
 	{#- Initialise a base script-src directive -#}
 	{%- set script_src = "script-src 'self'" -%}
@@ -11,17 +11,17 @@ content="default-src 'none';
 	{%- set connect_src = "connect-src 'self'" -%}
 
 	{# Base logic for appending analytics domains #}
-	{%- if config.extra.goatcounter %}
-		{%- set goatcounter_host = config.extra.goatcounter.host | default(value='goatcounter.com') -%}
-		{%- set goatcounter_url = "https://" ~ config.extra.goatcounter.user ~ "." ~ goatcounter_host ~ "/count" %}
+	{%- if config.extra?.goatcounter %}
+		{%- set goatcounter_host = config.extra?.goatcounter?.host | default(value='goatcounter.com') -%}
+		{%- set goatcounter_url = "https://" ~ config.extra?.goatcounter?.user ~ "." ~ goatcounter_host ~ "/count" %}
 		{%- set script_src = script_src ~ " " ~ goatcounter_url -%}
 		{%- set connect_src = connect_src ~ " " ~ goatcounter_url -%}
 	{%- endif %}
 
 
 	{#- Append comments host if present -#}
-	{%- if config.extra.comments -%}
-		{%- set connect_src = connect_src ~ " " ~ "https://" ~ config.extra.comments.host -%}
+	{%- if config.extra?.comments -%}
+		{%- set connect_src = connect_src ~ " " ~ "https://" ~ config.extra?.comments?.host -%}
 	{%- endif -%}
 
 	{#- Append WebSocket for Zola serve mode -#}
@@ -29,7 +29,7 @@ content="default-src 'none';
 		{%- set connect_src = connect_src ~ " ws:" -%}
 	{%- endif -%}
 
-	{%- for domain in config.extra.csp -%}
+	{%- for domain in config.extra?.csp -%}
 		{%- if domain.directive == "connect-src" -%}
 			{%- set configured_connect_src = domain.domains | join(sep=' ') -%}
 			{%- set_global connect_src = connect_src ~ " " ~ configured_connect_src  -%}

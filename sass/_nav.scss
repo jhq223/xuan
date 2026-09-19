@@ -135,8 +135,10 @@
 
 			@media only screen and (max-width: 480px) {
 				&:not(:has(.circle)) {
-					flex: 0 0 100%;
+					flex: 0 1 auto;
 				}
+                &#home { flex-basis: 100%; }
+                > a { padding-inline: 0.375rem; font-size: var(--font-size-small); }
 			}
 		}
 

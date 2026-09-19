@@ -1,76 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const targetId = "#pagefind-search";
-    const searchContainer = document.getElementById('search-container');
-    const searchToggle = document.getElementById('search-toggle');
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("search-container");
+    const toggle = document.getElementById("search-toggle");
+    const target = document.getElementById("pagefind-search");
+    if (!container || !toggle || !target) return;
 
-    // 1. 初始化 Pagefind
-    if (typeof PagefindUI !== 'undefined') {
-        const ui = new PagefindUI({
-            element: targetId,
+    let initialized = false;
+    function initializeSearch() {
+        if (initialized || typeof PagefindUI === "undefined") return;
+        initialized = true;
+        const observer = new MutationObserver(attachInput);
+        function attachInput() {
+            const input = target.querySelector("input");
+            if (!input) return;
+            input.id = "search-bar";
+            input.setAttribute("autocomplete", "off");
+            observer.disconnect();
+            if (container.classList.contains("active")) input.focus();
+        }
+        observer.observe(target, {childList: true, subtree: true});
+        new PagefindUI({
+            element: "#pagefind-search",
             showSubResults: true,
             showImages: false,
-            translations: {
-                placeholder: document.querySelector(targetId)?.getAttribute('data-placeholder') || "Search"
-            }
+            translations: {placeholder: target.dataset.placeholder || "Search"}
         });
-
-        // ⚡️ 补丁：给生成的 input 加上原来的 id，让 label 生效
-        const tryAttachId = setInterval(() => {
-            const input = document.querySelector(`${targetId} input`);
-            if (input) {
-                input.id = "search-bar"; // 还原 id="search-bar"
-                input.setAttribute('autocomplete', 'off'); // 关掉浏览器自动填充，避免挡住结果
-                clearInterval(tryAttachId);
-            }
-        }, 100);
+        attachInput();
     }
 
-    // 2. 开关逻辑 (核心修复)
-    function toggleSearch() {
-        // 切换 .active 类，触发 CSS 的 opacity/transform 动画
-        const isActive = searchContainer.classList.toggle("active");
-
-        if (isActive) {
-            // 打开时：聚焦输入框
-            setTimeout(() => {
-                const input = searchContainer.querySelector('input');
-                if (input) input.focus();
-            }, 100); // 延时等待 CSS 动画开始
-        } else {
-            // 关闭时：失焦
-            const input = searchContainer.querySelector('input');
-            if (input) input.blur();
+    function setOpen(open, restoreFocus = false) {
+        container.classList.toggle("active", open);
+        container.inert = !open;
+        toggle.setAttribute("aria-expanded", String(open));
+        if (open) {
+            initializeSearch();
+            target.querySelector("input")?.focus();
+        } else if (restoreFocus) {
+            toggle.focus();
         }
     }
 
-    // 3. 事件绑定
-    if (searchToggle) {
-        searchToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // 防止冒泡触发 document click
-            e.preventDefault();
-            toggleSearch();
-        });
-    }
-
-    // 点击外部关闭
-    document.addEventListener('click', (e) => {
-        if (searchContainer.classList.contains('active') &&
-            !searchContainer.contains(e.target) &&
-            e.target !== searchToggle) {
-            toggleSearch(); // 关闭
-        }
+    toggle.addEventListener("click", () => setOpen(!container.classList.contains("active"), true));
+    document.addEventListener("click", event => {
+        if (!container.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
     });
-
-    // 键盘快捷键 (ESC 和 /)
-    document.addEventListener('keydown', (e) => {
-        // ESC 关闭
-        if (e.key === "Escape" && searchContainer.classList.contains('active')) {
-            toggleSearch();
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && container.classList.contains("active")) {
+            event.preventDefault();
+            setOpen(false, true);
         }
-        // "/" 开启
-        if (e.key === "/" && !searchContainer.classList.contains('active') && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
-            e.preventDefault();
-            toggleSearch();
+        const editing = event.target.closest?.("input, textarea, select, [contenteditable]:not([contenteditable='false'])");
+        if (event.key === "/" && !editing && !event.ctrlKey && !event.metaKey && !event.altKey) {
+            event.preventDefault();
+            setOpen(true);
         }
     });
 });

@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="links-page">
-    <h1 class="page-title">{{ section.title }}</h1>
-    <div class="page-content">{{ section.content | safe }}</div>
+    <h1 class="page-title">{{ section?.title }}</h1>
+    <div class="page-content">{{ section?.content | safe }}</div>
 
     {# 加载数据 #}
     {% set data = load_data(path="data/friends.toml") %}

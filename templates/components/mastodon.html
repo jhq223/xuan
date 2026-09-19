@@ -1,16 +1,19 @@
+{% component mastodon(id, config, host="", user="") %}
 {%- if host -%}
 	{%- set host = host -%}
 {%- else -%}
-	{%- set host = config.extra.comments.host -%}
+	{%- set host = config.extra?.comments?.host -%}
 {%- endif -%}
 
 {%- if user -%}
 	{%- set user = user -%}
 {%- else -%}
-	{%- set user = config.extra.comments.user -%}
+	{%- set user = config.extra?.comments?.user -%}
 {%- endif -%}
 
 <iframe
 	class="mastodon-embed"
 	src="https://{{ host }}/@{{ user }}/{{ id }}/embed">
 </iframe>
+
+{% endcomponent mastodon %}

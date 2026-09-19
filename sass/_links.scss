@@ -22,7 +22,7 @@
 .links-grid {
     display: grid;
     // 响应式 Grid：最小宽度 300px，自动填充
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 1.5rem;
 }
 

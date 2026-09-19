@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			block.getAttribute("data-name") ||
 			codeEl?.getAttribute("data-lang") ||
 			block.getAttribute("data-language");
-		title.innerHTML = name || "";
+		title.textContent = name || "";
 
 		const icon = document.createElement("i");
 		icon.classList.add("icon");
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const header = document.createElement("div");
 		header.classList.add("header");
-		if (title.innerHTML) {
+		if (title.textContent) {
 			header.appendChild(title);
 		}
 		header.appendChild(button);

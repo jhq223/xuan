@@ -1,10 +1,10 @@
 # Shown in language picker for multi-language sites
 language_name = "English"
-# Tera date format used for listing posts
+# UTS-35 date pattern used with locale for listing posts
 # (post publication date, tag posts list...).
 # Not used in comments, "date_locale" is used instead.
-# See https://docs.rs/chrono/0.4.31/chrono/format/strftime/index.html
-date_format = "%B %d, %Y"
+# See https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+date_format = "MMMM dd, y"
 date_locale = "en_US"
 
 # Menu items.
@@ -81,3 +81,6 @@ updated = "Updated on"
 view_comment = "View Comment At"
 view_profile = "View Profile At"
 archive_title = "Archive"
+
+archive_years = "Browse by year"
+archive_count = "$NUMBER posts"

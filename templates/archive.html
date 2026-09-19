@@ -1,62 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% set blog = get_section(path="blog/_index.md", lang=lang) %}
+{% set posts = blog.pages | sort(attribute="date") | reverse %}
+{% set years = [post.year for post in posts] | unique | sort | reverse %}
 <div class="archive-page">
-
-    <header class="archive-page-header">
-        <h1 class="archive-page-title">
-            {{ macros_translate::translate(
-                key="archive_title",
-                default="Archive" | capitalize,
-                language_strings=language_strings
-            ) }}
-        </h1>
-
-        {% set section = get_section(path="blog/_index.md") %}
-        <p class="archive-page-subtitle">
-            {{ macros_translate::translate(
-                key='posts',
-                number=section.pages | length,
-                default='$NUMBER posts in total',
-                language_strings=language_strings
-            ) }}
-        </p>
+    <header class="page-heading archive-page-header">
+        <h1>{{ <xuan.translate key="archive_title" default="Archive" language_strings={language_strings} lang={lang} /> }}</h1>
+        <div class="page-heading-meta">
+            <span>{{ <xuan.translate key="posts" number={posts | length} default="$NUMBER posts" language_strings={language_strings} lang={lang} /> }}</span>
+            {% if years | length > 1 %}
+            <span class="archive-range">{{ years | last }} <span aria-hidden="true">—</span> {{ years | first }}</span>
+            {% endif %}
+        </div>
+        {% if years | length > 1 %}
+        <nav class="archive-years" aria-label="{{ <xuan.translate key='archive_years' default='Browse by year' language_strings={language_strings} lang={lang} /> }}">
+            {% for year in years %}
+            <a href="#year-{{ year }}">{{ year }}<i class="icon" aria-hidden="true"></i></a>
+            {% endfor %}
+        </nav>
+        {% endif %}
     </header>
 
     <div class="timeline">
-        {% set posts = section.pages | sort(attribute="date") | reverse %}
-
-        {% for year, items in posts | group_by(attribute="year") %}
-        <section class="timeline-group">
-
-            <!-- 年份 -->
-            <div class="timeline-row timeline-row--year">
-                <div class="timeline-axis">
-                    <span class="timeline-dot timeline-dot--year"></span>
-                </div>
-                <h2 class="timeline-year">{{ year }}</h2>
-            </div>
-
-            <!-- 文章 -->
-            {% for post in items %}
-            <a href="{{ post.permalink }}" class="timeline-row timeline-row--post">
-                <div class="timeline-axis">
-                    <span class="timeline-dot timeline-dot--post"></span>
-                </div>
-
-                <time class="timeline-date">
-                    {{ post.date | date(format="%m-%d") }}
-                </time>
-
-                <span class="timeline-title">
-                    {{ post.title }}
-                </span>
-            </a>
-            {% endfor %}
-
+        {% for year in years %}
+        {% set items = [post for post in posts if post.year == year] %}
+        <section class="timeline-group" aria-labelledby="year-{{ year }}">
+            <header class="timeline-year-heading">
+                <h2 class="timeline-year" id="year-{{ year }}">{{ year }}</h2>
+                <span class="timeline-count">{{ <xuan.translate key="archive_count" number={items | length} default="$NUMBER posts" language_strings={language_strings} lang={lang} /> }}</span>
+            </header>
+            <ol class="timeline-entries">
+                {% for post in items %}
+                <li>
+                    <a href="{{ post.permalink }}" class="timeline-entry">
+                        <time class="timeline-date" datetime="{{ post.date }}">{{ post.date | date(format="%m-%d") }}</time>
+                        <span class="timeline-title">{{ post.title }}</span>
+                        <i class="icon timeline-arrow" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endfor %}
+            </ol>
         </section>
         {% endfor %}
     </div>
-
 </div>
 {% endblock content %}

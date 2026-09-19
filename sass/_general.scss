@@ -129,7 +129,8 @@ main {
 	}
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
+	:root { scroll-behavior: auto; }
 
 	*,
 	*::before,

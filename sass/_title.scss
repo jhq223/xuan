@@ -3,3 +3,21 @@ strong.title {
 	font-size: var(--font-size-x-large);
 	line-height: 1;
 }
+
+.page-heading {
+    border-block-end: 1px solid var(--fg-muted-2);
+    padding-block: 0.5rem 1.75rem;
+
+    h1 { margin-block: 0 1rem; }
+    > p:not(.page-heading-meta) { color: var(--fg-muted-5); }
+}
+
+.page-heading-meta {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-block: 1.25rem 0;
+    color: var(--fg-muted-5);
+    font-size: var(--font-size-small);
+}

@@ -5,7 +5,7 @@ https://github.com/welpo/tabi/blob/7b00ed1d9dca5c529d2816c5b6679bfe600d63fc/temp
 <li id="language-switcher">
 	<details class="closable">
 		<summary class="circle"
-			title="{{ macros_translate::translate(key='language', default='Language', language_strings=language_strings) }}">
+			title="{{ <xuan.translate key={'language'} default={'Language'} language_strings={language_strings} lang={lang} /> }}">
 			<i class="icon"></i>
 		</summary>
 		<ul>
@@ -20,8 +20,7 @@ https://github.com/welpo/tabi/blob/7b00ed1d9dca5c529d2816c5b6679bfe600d63fc/temp
 			{%- set other_language_strings = load_data(path="themes/xuan/i18n/" ~ lcode ~ ".toml", required=false) -%}
 			{%- endif -%}
 			{#- Use the loaded language strings to get the language name -#}
-			{% set language_name = macros_translate::translate(key="language_name", default=lcode,
-			language_strings=other_language_strings) %}
+			{% set language_name = <xuan.translate key={"language_name"} default={lcode} language_strings={other_language_strings or {}} lang={lang} /> %}
 			{#- Check if the language code matches the default language -#}
 			{%- if lcode == config.default_language -%}
 			{#- If it does, link to the root path (no language code in URL) -#}
