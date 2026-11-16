@@ -156,7 +156,8 @@
     overflow-wrap: anywhere;
 }
 
-.timeline-arrow {
+.timeline-entry > .timeline-arrow {
+    align-self: center;
     mask-image: var(--icon-right);
     -webkit-mask-image: var(--icon-right);
     width: 0.875rem;
@@ -174,7 +175,6 @@
     .timeline-year { font-size: 2.25rem; }
     .timeline-count { margin: 0; }
     .timeline-entries { margin-inline-start: 0.25rem; }
-    .timeline-entry { margin-inline-start: 0.625rem; padding-inline: 0.625rem 0.25rem; column-gap: 0.625rem; grid-template-columns: 2.75rem minmax(0, 1fr); }
-    .timeline-arrow { display: none; }
+    .timeline-entry { margin-inline-start: 0.625rem; padding-inline: 0.625rem; column-gap: 0.625rem; grid-template-columns: 2.75rem minmax(0, 1fr) 0.875rem; }
     .timeline-title { font-size: 0.9375rem; }
 }
